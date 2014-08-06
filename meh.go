@@ -27,15 +27,13 @@ func GetMeh() (response string) {
         var doc *goquery.Document
         var e error
 
-        // var useragent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4";
-
         if doc, e = goquery.NewDocument("https://meh.com/"); e != nil {
                 log.Fatal(e)
         }
 
-        i_features := make([]string, 0)
-        i_story := make([]string, 0)
-        i_pictures := make([]string, 0)
+        i_features := []string{}
+        i_story := []string{}
+        i_pictures := []string{}
         i_videolink, _ := doc.Find("#video section iframe").Attr("src")
         i_forumlink, _ := doc.Find("section.features a").Attr("href")
         i_name := doc.Find("section.features h2").Text()
